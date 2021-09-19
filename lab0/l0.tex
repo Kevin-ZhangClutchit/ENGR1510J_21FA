@@ -1,0 +1,152 @@
+\documentclass[11pt]{exam}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsfonts, amsmath, amssymb, amsthm}
+\usepackage{mathtools}
+\usepackage{enumerate}
+\usepackage{listings}
+\usepackage{colortbl}
+\usepackage{float}
+\usepackage[colorlinks,linkcolor=blue,citecolor=black]{hyperref}
+\usepackage{xcolor}
+
+\input{header}
+
+\geometry{left=2.5 cm,right=2.5 cm,top=2.5 cm,bottom=2.5 cm}
+%\pagestyle{fancy}
+\definecolor{mygreen}{rgb}{0,0.6,0}  
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82} 
+\definecolor{background}{rgb}{0.963,0.963,0.963}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+\newcommand{\labnum}{0}
+\newcommand{\duedate}{September 16th}
+
+%\notesheader
+\hwheader   % header for homework
+%\hwslnheader   % header for homework solutions
+
+% Comment the following line in order to hide solutions.
+% Uncomment the line to show solutions written inside of
+% LaTeX solution environments like:
+%   \begin{solution}
+%     My solution.
+%   \end{solution}.
+\printanswers
+\begin{document}
+
+\section{Computer Interaction}
+\subsection{Windows, MacOS, and Linux}
+\begin{itemize}
+    \item Windows, or Microsoft Windows, is "a group of several non-free graphical operating system families developed and marketed by Microsoft".\cite{ref1}
+    \item Mac OS is "a non-free graphical operating system developed and marketed by Apple Inc and the primary operating system for Apple's Mac computers".\cite{ref2}
+    \item Linux is an open-source operating system which is free and highly flexible. It has strong performance, stability and security. It is also less demanding for hardware and storage. Yet, it has immature graphical user interface (GUI) and is only compatible with a few softwares, which makes it uncommon in use for most people. However, it is friendly to developers due to its characteristics.
+\end{itemize}
+\subsection{What is a terminal?}
+\begin{itemize}
+    \item "The \textbf{terminal} is a program that opens a window and lets you interact with the \textbf{shell}. The \textbf{shell} on the other hand is a program that takes commands from the keyboard and passes them to the operating system to perform."\cite{ref3}
+    \item It enables direct execution of tasks without the use of graphical user interface.
+    \item It is especially useful in cases when GUI is unavailable or when remote access to other hosts is required, etc.
+    \item How to open the terminal
+    \begin{itemize}
+        \item Windows: press Win+R on the keyboard and enter 'cmd'.
+        \item MacOS: press Command+Space on the keyboard and search for 'Terminal'.
+        \item Linux: press Ctrl+Alt+T on the keyboard.
+    \end{itemize}
+\end{itemize}
+
+\subsection{What is a package manager?}
+\begin{itemize}
+    \item "Package manager is a kind of tools that \textbf{automates} the process of installing, upgrading, configuring and removing computer programs."\cite{ref4}
+    \item Package manager is intended to eliminate the need of manual install and updates, which is very useful if you have hundreds and thousands of software (big companies).
+    \item We will use package manager to download compilers for C/C++ later, as well as other programming tools.
+    \item Linux has prepared users with a package manager \textbf{rpm/dpkg/apt-get}. Windows users can install \textbf{msys2}. Mac users can install \textbf{brew}.
+\end{itemize}
+
+\subsection{Useful terminal commands}
+\begin{itemize}
+    \item Enter a disk on Windows, \textit{E} disk for example: \textbf{E:}
+    \item Enter a directory: \textbf{cd [directory]} 
+    \item (Powershell, Linux \& Mac OS; cmd not applicable) For folder with space in its name, you should quote its name with single quotation marks. For example, for a folder named 2021 FA, we should type: \textbf{cd '2021 FA'}. So it is recommended to replace space with \_ when naming your files.
+    \item Enter a folder: \textbf{cd [name]}
+    \item Return to last directory: \textbf{cd ..}
+    \item Return to root directory: \textbf{cd $\backslash$ } for Windows and \textbf{cd /} for MacOS and Linux
+    \item Check content under current directory: \textbf{dir} for Windows and \textbf{ls} for MacOS and Linux
+    \item Create a folder: \textbf{md [name]} for Windows and \textbf{mkdir [name]} for MacOS and Linux
+    \item Delete an empty folder: \textbf{rd [name]} for Windows and \textbf{rmdir [name]} for MacOS and Linux. \textbf{rm -rf [name]} is dangerous, think twice before using it!
+    \item Copy a file:  \textbf{copy [original directory]$\backslash$[name] [target directory]$\backslash$[name]} for Windows and \textbf{cp  [original directory]/[name] [target directory]/[name]} for MacOS and Linux
+    \item Move a file: \textbf{move [original directory]$\backslash$[name] [target directory]$\backslash$[name]} for Windows and \textbf{mv  [original directory]/[name] [target directory]/[name]} for MacOS and Linux
+    \item Delete a file : \textbf{del [name]} for Windows and \textbf{rm [name]} for MacOS and Linux
+\end{itemize}
+\subsection{An easy demo}
+Suppose we have a file named new\_file in a folder named dest.
+Our tasks are:
+\begin{itemize}
+    \item Copy the file to a new folder named new\_folder with file name copy\_file.
+    \item Move the file to new\_folder with file name move\_file.
+    \item Delete the original empty folder dest.
+\end{itemize}
+\begin{enumerate}
+\item cmd (not recommended in following courses)
+\begin{lstlisting}[language={sh}]
+md new_folder
+copy dest\new_file new_folder\copy_file
+move dest\new_file new_folder\move_file
+rd dest
+\end{lstlisting}  
+\item Linux/MacOS
+\begin{lstlisting}[language={sh}]
+mkdir new_folder
+cp dest/new_file new_folder/copy_file
+mv dest/new_file new_folder/move_file
+rmdir dest/
+\end{lstlisting}  
+\end{enumerate}
+\section{SSH tips}
+\begin{itemize}
+\item In Step2:
+\begin{lstlisting}[language={sh}]
+ssh-keygen -t ed25519 -C "your_email@example.com"
+\end{lstlisting} 
+Here your\_email@example.com should be replaced by your sjtu email. For example, if your sjtu email is vg151@sjtu.edu.cn, in this step, you should type:
+\begin{lstlisting}[language={sh}]
+ssh-keygen -t ed25519 -C "vg151@sjtu.edu.cn"
+\end{lstlisting} 
+in the bash.
+\item In Step4: It is normal that you type something but you cannot see the input passphrase on the screen. You can treat it as a protected mechanism of bash. Just assume you are registering a new account in which you should set your password and confirm it.
+\item Which file contents should be copied \& pasted? You should copy your \textbf{public} key which is the file with extension .pub.
+\item Where is .ssh folder? The default path should be at c:/Users/your user name/. \cite{ref5} 
+\end{itemize}
+\newpage
+\begin{thebibliography}{}
+    \bibitem{ref1}Wikipedia contributors. "Microsoft Windows." Wikipedia, The Free Encyclopedia. Wikipedia, The Free Encyclopedia, 8 Sep. 2021. Web. 13 Sep. 2021.
+    \bibitem{ref2}Wikipedia contributors. "MacOS." Wikipedia, The Free Encyclopedia. Wikipedia, The Free Encyclopedia, 22 Aug. 2021. Web. 13 Sep. 2021.
+    \bibitem{ref3}What is "the Shell"? \text{http://www.linuxcommand.org/lc3\_lts0010.php}
+    \bibitem{ref4}Package Manager. https://codedocs.org/what-is/package-manager
+    \bibitem{ref5}Generating a new SSH key and adding it to the ssh-agent \par https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
+\end{thebibliography}
+\end{document}
