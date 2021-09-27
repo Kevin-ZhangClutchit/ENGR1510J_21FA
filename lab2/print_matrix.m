@@ -1,10 +1,11 @@
 function print_matrix(matrix)
-%UNTITLED5 此处显示有关此函数的摘要
-%   此处显示详细说明
+%REQUIRE: A matrix
+%EFFECT: print the matrix with space between elements in one row and one
+%row one line
 row=size(matrix,2);
 for i = 1:row
     for j=1:row
-        if j==row
+        if j==row %The last element in one row, no need for space behind.
             fprintf('%d',matrix(i,j));
         else
             fprintf('%d ',matrix(i,j)); 
