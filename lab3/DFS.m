@@ -1,23 +1,25 @@
-function cnt = DFS(map,row,col,src_row,src_col)
-%UNTITLED 此处显示有关此函数的摘要
-%   此处显示详细说明
-global accessible_treasure;
-answer=0;
+function [map,cnt] = DFS(map,row,col,src_row,src_col,cnt)
+%carry out the DFS and update the map
 if (map(src_row,src_col)=='t')
-   accessible_treasure=accessible_treasure+1;
+   fprintf("A treasure located at row:%d col:%d\n", src_row,src_col);
+   cnt=cnt+1;
 end
+%What is this 'v' used for?
 map(src_row,src_col)='v';
 
+%Why not if-elseif-else?
 if (src_row-1>0&&map(src_row-1,src_col)~='v'&&map(src_row-1,src_col)~='X')
-    answer=answer+DFS(map,row,col,src_row-1,src_col);
-elseif (src_row+1<=row&&map(src_row+1,src_col)~='v'&&map(src_row+1,src_col)~='X')
-    answer=answer+DFS(map,row,col,src_row+1,src_col);
-elseif (src_col-1>0&&map(src_row,src_col-1)~='v'&&map(src_row,src_col-1)~='X')
-    answer=answer+DFS(map,row,col,src_row,src_col-1);
-elseif (src_col+1<=col&&map(src_row,src_col+1)~='v'&&map(src_row,src_col+1)~='X')
-    answer=answer+DFS(map,row,col,src_row,src_col+1);
+    [map,cnt] =DFS(map,row,col,src_row-1,src_col,cnt);
 end
-cnt=answer;
+if (src_row+1<=row&&map(src_row+1,src_col)~='v'&&map(src_row+1,src_col)~='X')
+    [map,cnt] =DFS(map,row,col,src_row+1,src_col,cnt);
+end
+if (src_col-1>0&&map(src_row,src_col-1)~='v'&&map(src_row,src_col-1)~='X')
+    [map,cnt] =DFS(map,row,col,src_row,src_col-1,cnt);
+end
+if (src_col+1<=col&&map(src_row,src_col+1)~='v'&&map(src_row,src_col+1)~='X')
+    [map,cnt] =DFS(map,row,col,src_row,src_col+1,cnt);
+end
 return;
 end
 
