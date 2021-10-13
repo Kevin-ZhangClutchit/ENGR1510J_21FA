@@ -6,6 +6,8 @@ if (map(src_row,src_col)=='t')
 end
 %What is this 'v' used for?
 map(src_row,src_col)='v';
+fprintf("Current map situation:\n");
+disp(map);
 
 %Why not if-elseif-else?
 if (src_row-1>0&&map(src_row-1,src_col)~='v'&&map(src_row-1,src_col)~='X')

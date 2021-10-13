@@ -4,7 +4,7 @@ function [answer,row,col]=map_read
 s=input('Input the name of the map file: ','s');
 fid=fopen(s,'r');
 errmsg='Fail to open';
-if (fid<1)
+if (fid<0)
    disp(errmsg); 
 end
 %Below part inspired by Jiache~

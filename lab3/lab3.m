@@ -1,5 +1,6 @@
 function lab3
 %Main function
+clc;
 [map,row,col]=map_read;
 [src_row,src_col]=find(map=='s');
 [~,answer]=DFS(map,row,col,src_row,src_col,0);
