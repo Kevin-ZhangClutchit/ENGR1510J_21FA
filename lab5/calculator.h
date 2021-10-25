@@ -9,8 +9,11 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
+#include <errno.h>
 #define INTERACT 0
-#define FILE 1
-void cli_parse(int argc,char** argv,int* mode);
+#define FILE_T 1
+#define STRING_T 2
+#define LINE_MAX 1024
+void cli_parse(int argc,char** argv,int* mode,char* str_evl);
 double evaluate(int operand1, char operator, int operand2);
 #endif //L5_CODE_CALCULATOR_H
