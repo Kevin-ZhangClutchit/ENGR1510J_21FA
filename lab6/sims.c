@@ -21,7 +21,7 @@ struct Country get_winner(const struct Country a,const struct Country b, int k){
     fclose(fid);
     return winner;
 }
-
+//lazy method
 void country_init_l6(struct Country* count_arr){
     (count_arr+15)->rank=14;
     strcpy((count_arr+15)->name,"URU");
@@ -90,6 +90,7 @@ int file_read(struct Country* count_arr){
         (count_arr+15+i)->rank=(unsigned )strtod(end_token,end_ptr);
         i++;
     }
+    free(buf);
     fclose(fid);
     return k;
 }
