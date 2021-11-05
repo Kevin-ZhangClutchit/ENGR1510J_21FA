@@ -20,7 +20,7 @@ int main() {
     char* buf=malloc(sizeof(char)*LINE_MAX);
     fgets(buf,sizeof(char)*LINE_MAX,fid);
     char** end_ptr=NULL;
-    int k=strtod(buf,end_ptr);
+    int k=strtol(buf,end_ptr,10);
     free(buf);
     world_cup_tree_init(root,4,fid);
     //post-order DFS
