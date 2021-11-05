@@ -59,7 +59,7 @@ void world_cup_tree_init(Node* root,size_t level,FILE * fid){
 }
 
 void get_winner(Node* root,const Node* a,const Node* b, int k){
-    double rate=((double)(a->country->rank + (unsigned int) k) / (double)(a->country->rank + b->country->rank + (unsigned int) (2 * k)));
+    double rate=((double)((int) a->country->rank +  k) / (double)((int) a->country->rank + (int) b->country->rank +  (2 * k)));
     double rand_res=(double )(rand()%100);
     FILE* fid=fopen("l7_output.txt","a");
     if (rand_res<(rate*100)){
