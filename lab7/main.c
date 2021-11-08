@@ -4,7 +4,6 @@
 
 int main() {
     srand((unsigned )time(NULL));
-
     FILE * clear=fopen("l7_output.txt","w");
     if (clear==NULL){
         perror("l7_output.txt");
@@ -18,9 +17,11 @@ int main() {
         exit(-1);
     }
     char* buf=malloc(sizeof(char)*LINE_MAX);
-    fgets(buf,sizeof(char)*LINE_MAX,fid);
+    if(fgets(buf,sizeof(char)*LINE_MAX,fid)){
+
+    };
     char** end_ptr=NULL;
-    int k=strtol(buf,end_ptr,10);
+    int k=(int)strtol(buf,end_ptr,10);
     free(buf);
     world_cup_tree_init(root,4,fid);
     //post-order DFS

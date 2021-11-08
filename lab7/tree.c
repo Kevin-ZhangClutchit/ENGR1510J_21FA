@@ -73,6 +73,7 @@ void get_winner(Node* root,const Node* a,const Node* b, int k){
         fprintf(fid,"%s WIN %s\n",a->country->name,b->country->name);
         fprintf(stdout,"%s WIN %s\n",a->country->name,b->country->name);
     }
+
     fclose(fid);
 }
 
