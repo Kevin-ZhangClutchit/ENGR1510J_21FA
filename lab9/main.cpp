@@ -20,18 +20,49 @@ int main() {
             if(operator_stack.empty()){
                 operator_stack.push(item);
             }else{
-
-                    if (operator_stack.top()=='*'||operator_stack.top()=='/'){
-                        int a=number_stack.top();
-                        number_stack.pop();
-                        int b=number_stack.top();
-                        number_stack.pop();
-                        int result=(operator_stack.top()=='*')?b*a:b/a;
-                        operator_stack.pop();
-                        number_stack.push(result);
-                    }
+                if ((item=='*'||item=='/')&&(operator_stack.top()=='+'||operator_stack.top()=='-')){
                     operator_stack.push(item);
 
+                } else{
+                    if (item=='+'||item=='-'){
+                            int a=number_stack.top();
+                            number_stack.pop();
+                            int b=number_stack.top();
+                            number_stack.pop();
+                            int result;
+                            switch (operator_stack.top()) {
+                                case '+':result=b+a;break;
+                                case '-':result=b-a;break;
+                                case '*':result=b*a;break;
+                                case '/':result=b/a;break;
+                                default:break;
+                            }
+                            operator_stack.pop();
+                            number_stack.push(result);
+                            operator_stack.push(item);
+                    }else{
+                        while (operator_stack.top()!='+'&&operator_stack.top()!='-'){
+                            int a=number_stack.top();
+                            number_stack.pop();
+                            int b=number_stack.top();
+                            number_stack.pop();
+                            int result;
+                            switch (operator_stack.top()) {
+                                case '+':result=b+a;break;
+                                case '-':result=b-a;break;
+                                case '*':result=b*a;break;
+                                case '/':result=b/a;break;
+                                default:break;
+                            }
+                            operator_stack.pop();
+                            number_stack.push(result);
+                        }
+                        operator_stack.push(item);
+                    }
+
+
+
+                }
             }
         }
     }
