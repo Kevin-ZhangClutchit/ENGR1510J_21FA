@@ -35,8 +35,6 @@ int main() {
                     operator_stack.push(item);
                 }
             }
-        } else{
-            throw std::invalid_argument("Invalid input!\n");
         }
     }
     while (!operator_stack.empty()){
