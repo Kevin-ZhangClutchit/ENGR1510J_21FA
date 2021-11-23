@@ -20,7 +20,7 @@ int main() {
             if(operator_stack.empty()){
                 operator_stack.push(item);
             }else{
-                if (item=='+'||item=='-'){
+
                     if (operator_stack.top()=='*'||operator_stack.top()=='/'){
                         int a=number_stack.top();
                         number_stack.pop();
@@ -31,9 +31,7 @@ int main() {
                         number_stack.push(result);
                     }
                     operator_stack.push(item);
-                } else{
-                    operator_stack.push(item);
-                }
+
             }
         }
     }
