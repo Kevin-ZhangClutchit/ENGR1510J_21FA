@@ -8,15 +8,15 @@ int main() {
     std::stack<char> operator_stack;
     std::string s;
     std::cout << "Input the calculation:" << std::endl;
-    std::cin >> s;
+    std::getline(std::cin,s);
 
     for (auto &item : s) {
-        if (strncmp(&item," ",1)==0){
+        if (item==' '){
             continue;
         }
         if (std::isdigit((unsigned char) item)!=0){
             number_stack.push(std::stoi(&item));
-        }else if (strncmp(&item,"+",1)==0||strncmp(&item,"-",1)==0||strncmp(&item,"*",1)==0||strncmp(&item,"/",1)==0){
+        }else if (item=='+'||item=='-'||item=='*'||item=='/'){
             if(operator_stack.empty()){
                 operator_stack.push(item);
             }else{
